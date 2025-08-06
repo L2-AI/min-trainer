@@ -5,3 +5,47 @@ MinTrainer is a light-weight pipeline for fine-tuning [ModernBERT](https://huggi
 This code was written to be compatible with [Google Colab](https://colab.research.google.com/), where free T4 GPUs are available. Using MinTrainer with a T4 GPU reduces training time to minutes for datasets with 20,000 input samples of 100 characters (5 epochs, training loss reduced to approx. 0).
 
 This open-source project was created by and is property of [L2 Labs](https://l2labs.ai/) but is free to use without restrictions.
+
+## Installation
+
+Clone the repostiory:
+
+```
+git clone https://github.com/L2-AI/min-trainer.git
+```
+
+From the root director `min-trainer` run:
+
+```
+pip install e .
+```
+
+## Usage
+
+To train a ModernBERT model on four categories from the `sklearn` `20newsgroups` dataset, run the following:
+
+```Python
+from mintrainer._sample_dataset_utils import get_newsgroup_df_and_targets
+from mintrainer.main import MinTrainer
+
+def main():
+    train_df, categories = get_newsgroup_df_and_targets(subset='train')
+    test_df, _ = get_newsgroup_df_and_targets(subset='test')
+
+    MinTrainer(
+        train_df = train_df,
+        test_df = test_df,
+        categories=categories,
+        #cache_dir= # Dir where HuggingFace transformers saves and reads models
+        #finetuned_model_output_dir= # Dir where finetuned model checkpoints are saved
+    )
+
+if __name__ == "__main__":
+    main()
+```
+
+Or from the directory `min-trainer/examples/` run the following from the CLI:
+
+```bash
+python newsgroup_classification.py
+```
