@@ -7,7 +7,7 @@ from transformers import (
     Trainer,
     TrainingArguments,
 )
-from _utils import (
+from mintrainer._utils import (
     get_id2label_and_label2id,
     dataframe_to_tokenized_dataset,
     compute_metrics,
