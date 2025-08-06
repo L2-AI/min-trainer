@@ -33,6 +33,7 @@ def MinTrainer(
         test_df: pd.DataFrame,
         categories: list[str],
         model_name:str ='answerdotai/ModernBERT-base',
+        model_func = ModernBertForSequenceClassification,
         cache_dir:str = None,
         finetuned_model_output_dir:str = None,
         training_args:TrainingArguments = DEFAULT_TRAINING_ARGS
@@ -43,7 +44,7 @@ def MinTrainer(
 
     id2label, label2id = get_id2label_and_label2id(categories)
 
-    model = ModernBertForSequenceClassification.from_pretrained(
+    model = model_func.from_pretrained(
         model_name,
         id2label=id2label,
         label2id=label2id,
