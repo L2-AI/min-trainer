@@ -13,6 +13,7 @@ setup(
         'datasets',
         'transformers',
         'torch',
+        'accelerate'
     ],       # Add dependencies here, e.g., ['numpy', 'torch']
     python_requires='>=3.7',
     classifiers=[
