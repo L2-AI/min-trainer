@@ -33,11 +33,11 @@ train_df, categories = get_newsgroup_df_and_targets(subset='train')
 test_df, _ = get_newsgroup_df_and_targets(subset='test')
 
 MinTrainer(
-    train_df = train_df,
-    test_df = test_df,
-    categories=categories,
-    #cache_dir= # Dir where HuggingFace transformers saves and reads models
-    #finetuned_model_output_dir= # Dir where finetuned model checkpoints are saved
+    train_df = train_df, # pd.DataFrame with 2 columns: `text` (as str) and `labels` (as int)
+    test_df = test_df, # same as above
+    categories=categories, # ordered list of label text ( `categories[0]` should map to label `0`)
+    #cache_dir= # dir where HuggingFace transformers saves and reads models
+    #finetuned_model_output_dir= # dir where finetuned model checkpoints are saved
 )
 ```
 
