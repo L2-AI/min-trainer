@@ -1,6 +1,6 @@
 # MinTrainer
 
-MinTrainer is a light-weight pipeline for fine-tuning [ModernBERT](https://huggingface.co/answerdotai/ModernBERT-base) models for classification tasks. This project is most useful in settings where there are many datasets containing observations with semantic meaning (e.g. text snippets, tokens) + associated categorical labels, and it is performant to train a unique model for each dataset (as is often the case in data mapping).
+MinTrainer is a light-weight pipeline for fine-tuning [ModernBERT](https://huggingface.co/answerdotai/ModernBERT-base) models for classification tasks. This project was most designed for settings where one has multiple datasets containing observations with semantic meaning (e.g. text snippets, tokens) + associated categorical labels, and it is performant to train a unique model for each dataset (as is often the case in data mapping).
 
 This code was written to be compatible with [Google Colab](https://colab.research.google.com/), where free T4 GPUs are available. Using MinTrainer with a T4 GPU reduces training time to minutes for datasets with 20,000 input samples of 100 characters (5 epochs, training loss reduced to approx. 0).
 
@@ -14,7 +14,7 @@ Clone the repostiory:
 git clone https://github.com/L2-AI/min-trainer.git
 ```
 
-From the root director `min-trainer` run:
+From the root directory `min-trainer/` run:
 
 ```
 pip install e .
@@ -33,11 +33,11 @@ train_df, categories = get_newsgroup_df_and_targets(subset='train')
 test_df, _ = get_newsgroup_df_and_targets(subset='test')
 
 MinTrainer(
-    train_df = train_df,
-    test_df = test_df,
-    categories=categories,
-    #cache_dir= # Dir where HuggingFace transformers saves and reads models
-    #finetuned_model_output_dir= # Dir where finetuned model checkpoints are saved
+    train_df = train_df, # pd.DataFrame with 2 columns: `text` (as str) and `labels` (as int)
+    test_df = test_df, # same as above
+    categories=categories, # ordered list of label text ( `categories[0]` should map to label `0`)
+    #cache_dir= # dir where HuggingFace transformers saves and reads models
+    #finetuned_model_output_dir= # dir where finetuned model checkpoints are saved
 )
 ```
 
