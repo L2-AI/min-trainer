@@ -67,6 +67,7 @@ def MinTrainer(
     )
 
     trainer.train()
-    trainer.evaluate()
+    res = trainer.evaluate()
+    print(res)
 
     return
