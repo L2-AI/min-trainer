@@ -17,7 +17,7 @@ git clone https://github.com/L2-AI/min-trainer.git
 From the root directory `min-trainer/` run:
 
 ```
-pip install e .
+pip install .
 ```
 
 ## Usage
