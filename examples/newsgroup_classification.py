@@ -8,9 +8,9 @@ def main():
     MinTrainer(
         train_df = train_df,
         test_df = test_df,
-        categories=categories,
-        #cache_dir= # Dir where HuggingFace transformers saves and reads models
-        #finetuned_model_output_dir= # Dir where finetuned model checkpoints are saved
+        categories = categories,
+        #cache_dir = # dir where HuggingFace transformers saves and reads models
+        #finetuned_model_output_dir = # dir where finetuned model checkpoints are saved
     )
 
 if __name__ == "__main__":
